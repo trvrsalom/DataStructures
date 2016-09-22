@@ -1,0 +1,121 @@
+<pre>
+/**
+ * @author Trevor Salom
+ * R8.4 Look at the public interface of the java.lang.System class and discuss
+ * whether or not it is cohesive.
+ *
+ * It is not cohesive because it is too general purpose.
+ *
+ * R8.5 Suppose an Invoice object contains descriptions of the products ordered,
+ * and the billing and shipping addresses of the customer. Draw a UML diagram
+ * showing the dependencies between the classes Invoice, Address, Customer, and
+ * Product.
+ *
+ *
+ *         +---------+
+ *         | Invoice |
+ *         +----+----+
+ *              |
+ *              |
+ * +---------+  |  +----------+     +-------+
+ * | Product +--+--+ Customer +---->+Address|
+ * +---------+     +----------+     +-------+
+ *
+ * R8.6 Suppose a vending machine contains products, and users insert coins in
+ * to the vending machine to purchase products. Draw a UML diagram showing the
+ * dependencies between the classes VendingMachine, Coin, and Product.
+ *
+ *  +----------------+
+ *  |                |
+ *  | VendingMachine |
+ *  |                |
+ *  +-+-------------++
+ *    |             |
+ *    |             |
+ *    |             |
+ *    v             v
+ * +--+--+      +---+---+
+ * |Coin |      |Product|
+ * +-----+      +-------+
+ *
+ * R9.11 Which of these conditions returns true? Check the Java documentation for the
+ * inheritance patterns. Recall that System.out is an object of the PrintStream class.
+ * a. System.out instanceof PrintStream
+ * True
+ * b. System.out instanceof OutputStream
+ * True
+ * c. System.out instanceof LogStream
+ * False
+ * d. System.out instanceof Object
+ * True
+ * e. System.out instanceof String
+ * False
+ * f. System.out instanceof Writer
+ * False
+ *
+ * R10.3 Suppose the class Sandwich implements the Edible interface, and you are
+ * given the variable declarations:
+ * Sandwich sub = new Sandwich();
+ * Rectangle cerealBox = new Rectangle(5, 10, 20, 30);
+ * Edible e = null
+ * Which of the following assignment statements are legal?
+ * a. e = sub;
+ * Legal
+ * b. sub = e;
+ * Illegal
+ * c. sub = (Sandwich) e;
+ * Illegal
+ * d. sub = (Sandwich) cerealBox;
+ * Illegal
+ * e. e = cerealBox;
+ * Illegal
+ * f. e = (Edible) cerealBox;
+ * Illegal
+ * g. e = (Rectangle) cerealBox;
+ * Illegal
+ * h. e = (Rectangle) null;
+ * Illegal
+ *
+ * R10.6 Classes such as Rectangle2D.Double, Ellipse2D.Double, and Line2D.Double
+ * implement the Shape interface. The Shape interface has a method 'Rectangle
+ * getBounds()' that returns a rectangle completely enclosing the shape.
+ * Consider the method call:
+ * Shape s = . . .;
+ * Rectangle r = s.getBounds();
+ * Explain why this is an example of polymorphism.
+ *
+ * This is an example of polymorphism because s can be any shape, but it will still
+ * work.
+ *
+ * R10.7 Suppose you need to process an array of employees to find the average
+ * salary. Discuss what you need to do to use the Data.average method in Section
+ * 10.1 (which processes Measurable objects). What do you need to do to use the
+ * second implementation (in Section 10.4)? Which is easier?
+ *
+ *  One would need to implement the measurable interface type (10.1), or one needs
+ *  to create another class which (measurableTester), which implements measurerer and
+ *  returns it's own information for the data.average method to find the average.
+ *
+ * R10.11 Consider this top-level and inner class. Which variables can the f method access?
+ * ```
+ * public class T {
+ * 	private int t;
+ * 	public void m(final int x, int y) {
+ * 		int a;
+ * 		final int b;
+ * 		class C implements I {
+ * 			public void f() {...}
+ * 		}
+ * 		final int c;
+ * 		...
+ * 	}
+ * }```
+ *
+ *	It can access final it can access a, b, c, and y, but not t.
+ *
+ * R10.12 What happens when an inner class tries to access a non-final local
+ * variable? Try it out and explain your findings.
+ *
+ * You can access the variable, but you can't change it.
+ */
+</pre>
