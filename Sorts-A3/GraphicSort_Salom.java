@@ -14,7 +14,7 @@ public class GraphicSort_Salom {
 		frame.setSize(640, 700);
 		frame.setVisible(true);
 		generateList();
-		swap(3,5);
+		quickSort(0, rectangles.size() - 1);
 	}
 
 	public static int randomRange(int minimum, int maximum) { return minimum + (int)(Math.random() * (maximum - minimum + 1)); }
@@ -31,22 +31,17 @@ public class GraphicSort_Salom {
 		return component;
 	}
 
-	public static void quickSort(int leftPos, int rightPos) {
-		// set pivot
-		int pivotLoc = (leftPos + rightPos) / 2;
-		// color pivot red
-		rectangles.get(i).setColor(Color.RED);
-		frame.repaint();
-		// quicksort the two halves
-		for (int i = 0; i < pivotLoc; i++) {
-			if (rectangles.get(i).getOurHeight() < rectangles.get(pivotLoc).getOurHeight()) {
-				// add the rectangle right before the pivot
-
-			}
-		}
-		// unset the pivot
-		// repeat with recursion
-
+	public static void quickSort(int left, int right) {
+		if (left < right){
+            int pivot = rectangles.get(right).getOurHeight();
+            int pos = left - 1;
+            for (int i = left; i < right; i++)
+                if (rectangles.get(i).getOurHeight() <= pivot)
+                    swap(++pos, i);
+            swap(pos + 1, right);
+            quickSort(left, pos);
+            quickSort(pos + 1, right);
+        }
 	}
 
 	public static void swap(int a, int b) {
