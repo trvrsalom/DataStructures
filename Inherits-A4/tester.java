@@ -5,6 +5,8 @@ public class tester {
 		SD2 sd2 = new SD2();
 		D2 d2 = sd2;
 
+		SD2 s2 = (SD2)b2;
+
 	}
 }
 

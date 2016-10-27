@@ -13,7 +13,7 @@ import java.awt.event.*;
  * the most difficult part being able to efficiently implement the game logic.
  */
 
-public class InheritsA5_Salom extends JFrame {
+public class InheritsA5_Salom {
 	private static int clicks = 0;
 	private static int[] pointX;
 	private static int[] pointY;
