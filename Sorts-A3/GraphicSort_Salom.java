@@ -15,6 +15,12 @@ public class GraphicSort_Salom {
 		frame.setVisible(true);
 		generateList();
 		quickSort(0, rectangles.size() - 1);
+		try {
+		  Thread.sleep(3000);
+		} catch(InterruptedException ex) {
+		  Thread.currentThread().interrupt();
+		}
+		System.exit(0);
 	}
 
 	public static int randomRange(int minimum, int maximum) { return minimum + (int)(Math.random() * (maximum - minimum + 1)); }
@@ -47,7 +53,7 @@ public class GraphicSort_Salom {
 	public static void swap(int a, int b) {
 		Rectangle rectA = rectangles.get(a);
 		Rectangle rectB = rectangles.get(b);
-		int animTime = 100;
+		int animTime = 50;
 		try {
 		  Thread.sleep(animTime);
 		} catch(InterruptedException ex) {
