@@ -28,7 +28,7 @@ public class GraphicSort_SalomMcConnell {
 	public static int randomRange(int minimum, int maximum) { return minimum + (int)(Math.random() * (maximum - minimum + 1)); }
 
 	public static void generateList() {
-		for(int i = 0; i < 10; i++)
+		for(int i = 0; i < 40; i++)
 			rectangles.add(addComponent(new Rectangle(i, randomRange(100, 600), Color.BLACK)));
 	}
 
@@ -40,11 +40,11 @@ public class GraphicSort_SalomMcConnell {
 	}
 
 	public static void quickSort(int left, int right) {
-		/*if (left < right){
+		if (left < right){
             int pivot = rectangles.get(right).getOurHeight();
 						rectangles.get(right).setColor(Color.RED);
 						frame.repaint();
-            int pos = left-1;
+            int pos = left - 1;
             for (int i = left; i < right; i++)
                 if (rectangles.get(i).getOurHeight() <= pivot)
                     swap(++pos, i);
@@ -55,29 +55,7 @@ public class GraphicSort_SalomMcConnell {
 						}
             quickSort(left, pos);
             quickSort(pos + 1, right);
-        }*/
-        int pivotIndex = (left + right) / 2;
-        int pivotHeight = rectangles.get(pivotIndex).getOurHeight();
-        rectangles.get(pivotIndex).setColor(Color.RED);
-			frame.repaint();
-
-        
-        while (left != pivotIndex && right != pivotIndex) {
-          while (rectangles.get(left).getOurHeight() < pivotHeight) left++;
-          while (rectangles.get(right).getOurHeight() > pivotHeight) right--;
-          if (left != pivotIndex && right != pivotIndex) {
-            swap(left, right);
-          } else {
-            quickSort(0, pivotIndex - 1);
-            quickSort(pivotIndex + 1, rectangles.size() - 1);
-          }
-          left++; right--;
         }
-        
-        quickSort(0, pivotIndex - 1);
-        quickSort(pivotIndex + 1, rectangles.size() - 1);
-
-        
 	}
 
 	public static void swap(int a, int b) {
@@ -120,8 +98,6 @@ class Rectangle extends JComponent {
 	int width;
 	int pos;
 	Color color;
-   
-   public static final int RECTANGLE_WIDTH = 60;
 
 	public Rectangle (int pos, int height, Color color) {
 		this.pos = pos;
@@ -143,8 +119,8 @@ class Rectangle extends JComponent {
 	protected void paintComponent(Graphics g) {
 		Graphics2D g2 = (Graphics2D)g;
 		g2.setPaint(color);
-		g2.fill(new Rectangle2D.Double(pos*RECTANGLE_WIDTH + 20, 700-height, width*RECTANGLE_WIDTH, height));
+		g2.fill(new Rectangle2D.Double(pos*15 + 20, 700-height, width*15, height));
 		g2.setPaint(Color.WHITE);
-		g2.draw(new Rectangle2D.Double(pos*RECTANGLE_WIDTH + 20, 700-height, width*RECTANGLE_WIDTH, height));
+		g2.draw(new Rectangle2D.Double(pos*15 + 20, 700-height, width*15, height));
 	}
 }
