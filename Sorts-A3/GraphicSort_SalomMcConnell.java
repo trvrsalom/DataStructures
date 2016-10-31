@@ -4,9 +4,11 @@ import java.awt.geom.*;
 import java.awt.event.*;
 import java.util.*;
 
-public class GraphicSort_Salom {
+public class GraphicSort_SalomMcConnell {
 	private static JFrame frame;
 	private static ArrayList<Rectangle> rectangles = new ArrayList<Rectangle>();
+
+	private static final int ANIMATION_TIME_DELAY = 300;
 
 	public static void main(String[] args) {
 	  frame = new JFrame("Sort Program");
@@ -16,17 +18,17 @@ public class GraphicSort_Salom {
 		generateList();
 		quickSort(0, rectangles.size() - 1);
 		try {
-		  Thread.sleep(3000);
+		  Thread.sleep(2000);
 		} catch(InterruptedException ex) {
 		  Thread.currentThread().interrupt();
 		}
-		System.exit(0);
+		//System.exit(0);
 	}
 
 	public static int randomRange(int minimum, int maximum) { return minimum + (int)(Math.random() * (maximum - minimum + 1)); }
 
 	public static void generateList() {
-		for(int i = 0; i < 10; i++)
+		for(int i = 0; i < 40; i++)
 			rectangles.add(addComponent(new Rectangle(i, randomRange(100, 600), Color.BLACK)));
 	}
 
@@ -40,22 +42,30 @@ public class GraphicSort_Salom {
 	public static void quickSort(int left, int right) {
 		if (left < right){
             int pivot = rectangles.get(right).getOurHeight();
+						rectangles.get(right).setColor(Color.RED);
+						frame.repaint();
             int pos = left - 1;
             for (int i = left; i < right; i++)
                 if (rectangles.get(i).getOurHeight() <= pivot)
                     swap(++pos, i);
             swap(pos + 1, right);
+						for(Rectangle r : rectangles) {
+							r.setColor(Color.BLACK);
+							frame.repaint();
+						}
             quickSort(left, pos);
             quickSort(pos + 1, right);
         }
 	}
 
 	public static void swap(int a, int b) {
+		if(a == b) {
+			return;
+		}
 		Rectangle rectA = rectangles.get(a);
 		Rectangle rectB = rectangles.get(b);
-		int animTime = 50;
 		try {
-		  Thread.sleep(animTime);
+		  Thread.sleep(ANIMATION_TIME_DELAY);
 		} catch(InterruptedException ex) {
 		  Thread.currentThread().interrupt();
 		}
@@ -63,7 +73,7 @@ public class GraphicSort_Salom {
 		rectB.setColor(Color.BLUE);
 		frame.repaint();
 		try {
-		  Thread.sleep(animTime);
+		  Thread.sleep(ANIMATION_TIME_DELAY);
 		} catch(InterruptedException ex) {
 		  Thread.currentThread().interrupt();
 		}
@@ -73,7 +83,7 @@ public class GraphicSort_Salom {
 		rectB.setHeight(bHeight);
 		frame.repaint();
 		try {
-		  Thread.sleep(animTime);
+		  Thread.sleep(ANIMATION_TIME_DELAY);
 		} catch(InterruptedException ex) {
 		  Thread.currentThread().interrupt();
 		}
@@ -109,8 +119,8 @@ class Rectangle extends JComponent {
 	protected void paintComponent(Graphics g) {
 		Graphics2D g2 = (Graphics2D)g;
 		g2.setPaint(color);
-		g2.fill(new Rectangle2D.Double(pos*60 + 20, 700-height, width*60, height));
+		g2.fill(new Rectangle2D.Double(pos*15 + 20, 700-height, width*15, height));
 		g2.setPaint(Color.WHITE);
-		g2.draw(new Rectangle2D.Double(pos*60 + 20, 700-height, width*60, height));
+		g2.draw(new Rectangle2D.Double(pos*15 + 20, 700-height, width*15, height));
 	}
 }
