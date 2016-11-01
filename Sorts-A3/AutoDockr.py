@@ -26,7 +26,7 @@ for file in os.listdir("."):
 				content[i] = string
 				for item in content:
 					print(item)
-				'''with open(file, 'w') as f2: pass
+				with open(file, 'w') as f2: pass
 				with open(file, 'w') as f3:
 					for item in content:
-						f3.write("%s" % item)'''
+						f3.write("%s" % item)
