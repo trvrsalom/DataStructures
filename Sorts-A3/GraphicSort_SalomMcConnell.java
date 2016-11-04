@@ -3,6 +3,8 @@ import java.awt.*;
 import java.awt.geom.*;
 import java.awt.event.*;
 import java.util.*;
+import java.io.*;
+import java.lang.management.*;
 
 /**
  * GraphicSort_SalomMcConnell (class)
@@ -11,25 +13,29 @@ public class GraphicSort_SalomMcConnell {
  private static JFrame frame;
  private static ArrayList < Rectangle > rectangles = new ArrayList < Rectangle > ();
 
- private static final int ANIMATION_TIME_DELAY = 300;
+ private static final int ANIMATION_TIME_DELAY = 30;
  /**
   * main
   * @param String[] args
   * @return void
   */
  public static void main(String[] args) {
-  frame = new JFrame("Sort Program");
-  frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-  frame.setSize(640, 700);
-  frame.setVisible(true);
-  generateList();
-  quickSort(0, rectangles.size() - 1);
-  try {
-   Thread.sleep(2000);
-  } catch (InterruptedException ex) {
-   Thread.currentThread().interrupt();
-  }
-  System.exit(0);
+	while(true) {
+		System.out.println("new");
+	  frame = new JFrame("Sort Program");
+	  frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	  frame.setSize(640, 700);
+	  frame.setVisible(true);
+	  generateList();
+	  quickSort(0, rectangles.size() - 1);
+	  try {
+	   Thread.sleep(10);
+	  } catch (InterruptedException ex) {
+	   Thread.currentThread().interrupt();
+	  }
+		frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
+	}
+	//restartApplication();
  }
 
  /**
@@ -61,6 +67,24 @@ public class GraphicSort_SalomMcConnell {
   frame.setVisible(true);
   frame.repaint();
   return component;
+ }
+
+ public static void restartApplication() {
+	 StringBuilder cmd = new StringBuilder();
+             cmd.append(System.getProperty("java.home") + File.separator + "bin" + File.separator + "java ");
+             for (String jvmArg : ManagementFactory.getRuntimeMXBean().getInputArguments()) {
+                 cmd.append(jvmArg + " ");
+             }
+             cmd.append("-cp ").append(ManagementFactory.getRuntimeMXBean().getClassPath()).append(" ");
+             cmd.append(Window.class.getName()).append(" ");
+
+             try {
+                 Runtime.getRuntime().exec(cmd.toString());
+             } catch (IOException e) {
+                 // TODO Auto-generated catch block
+                 e.printStackTrace();
+             }
+             System.exit(0);
  }
 
  /**

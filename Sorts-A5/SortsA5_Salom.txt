@@ -1,0 +1,55 @@
+## TestYourself 1
+* The constructor: independent
+* addAfter: proportional
+* start: independent
+* getCurrent: independent
+* lookup: proportional
+
+## TestYourself 2
+1. What is the factor that can affect the number of questions asked (the "problem size")?
+	- Number of person
+2. In the worst case, how many questions will be asked for each of the three algorithms?
+	- 1
+	- n
+	- n^2
+3. For each algorithm, say whether it is constant, linear, or quadratic in the problem size in the worst case.
+	- constant
+	- linear
+	- quadratic
+
+## TestYourself 3
+1. Two loops in a row:
+		`for (i = 0; i < N; i++) {
+		  sequence of statements
+		}
+		for (j = 0; j < M; j++) {
+		  sequence of statements
+		}`
+		O(n+m)
+		How would the complexity change if the second loop went to N instead of M?
+		O(n)
+2. A nested loop followed by a non-nested loop:
+		`for (i = 0; i < N; i++) {
+		    for (j = 0; j < N; j++) {
+		        sequence of statements
+		    }
+		}
+		for (k = 0; k < N; k++) {
+		    sequence of statements
+		}`
+		O(n^2)
+3. A nested loop in which the number of times the inner loop executes depends on the value of the outer loop index:
+		`for (i = 0; i < N; i++) {
+		    for (j = i; j < N; j++) {
+		        sequence of statements
+		    }
+		}`
+		O(n log n)
+
+## TestYourself 4
+1. for (j = 0; j < N; j++) f(j);
+	- O(n)
+2. for (j = 0; j < N; j++) g(j);
+	- O(n^2)
+3. for (j = 0; j < N; j++) g(k);
+	- O(nk)
