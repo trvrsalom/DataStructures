@@ -13,7 +13,7 @@ public class GraphicSort_SalomMcConnell {
  private static JFrame frame;
  private static ArrayList < Rectangle > rectangles = new ArrayList < Rectangle > ();
 
- private static final int ANIMATION_TIME_DELAY = 30;
+ private static final int ANIMATION_TIME_DELAY = 500;
  /**
   * main
   * @param String[] args
@@ -53,7 +53,7 @@ public class GraphicSort_SalomMcConnell {
   * @return void
   */
  public static void generateList() {
-  for (int i = 0; i < 30; i++)
+  for (int i = 0; i < 10; i++)
    rectangles.add(addComponent(new Rectangle(i, randomRange(100, 600), Color.BLACK)));
  }
 
@@ -186,7 +186,7 @@ class Rectangle extends JComponent {
  int pos;
  Color color;
 
- public static final int RECTANGLE_WIDTH = 20;
+ public static final int RECTANGLE_WIDTH = 60;
 
  public Rectangle(int pos, int height, Color color) {
   this.pos = pos;
