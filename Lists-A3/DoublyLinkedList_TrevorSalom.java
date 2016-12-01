@@ -1,10 +1,6 @@
 import java.util.NoSuchElementException;
-
 import java.lang.IndexOutOfBoundsException;
-/**
- * DoublyLinkedList_TrevorSalom (class)
- * Tester class
- */
+
 public class DoublyLinkedList_TrevorSalom {
 	public static void main(String[] args) {
 		DoublyLinkedList <Integer>list = new DoublyLinkedList <Integer>();
@@ -29,10 +25,7 @@ class DoublyLinkedList <E> {
 	public Node first;
 	public Node last;
 	private int size = 0;
-	/**
-	 * Node (class)
-	 * Node objects to hold data
-	 */
+
 	private class Node {
 		public E data;
 		public Node next;
@@ -48,49 +41,24 @@ class DoublyLinkedList <E> {
 			this.previous = previous;
 		}
 
-		/**
-		 * toString
-		 * Returns the string value of the node
-		 * @return String
-		 */
 		public String toString() {
 			return data.toString();
 		}
 
-		/**
-		 * next
-		 * Returns the next node
-		 * @return Node
-		 */
 		public Node next() {
 			return next;
 		}
 
-		/**
-		 * previous
-		 * Returns the previous node
-		 * @return Node
-		 */
 		public Node previous() {
 			return previous;
 		}
 	}
 
-	/**
-	 * getFirst
-	 * Returns the first node of the list
-	 * @return E
-	 */
 	public E getFirst() {
 		if(first == null) throw new NoSuchElementException();
 		return first.data;
 	}
 
-	/**
-	 * removeFirst
-	 * Removes the first node of the list
-	 * @return E
-	 */
 	public E removeFirst() {
 		if(first == null) throw new NoSuchElementException();
 		Node node = first;
@@ -113,11 +81,6 @@ class DoublyLinkedList <E> {
 		last = node;
 	}
 
-	/**
-	 * removeLast
-	 * Removes an element from the end of the list
-	 * @return E
-	 */
 	public E removeLast() {
 		if(last == null) throw new NoSuchElementException();
 		Node node = last;
@@ -126,7 +89,6 @@ class DoublyLinkedList <E> {
 		size--;
 		return node.data;
 	}
-
 
 	public E get(int index) {
 		if(first == null) throw new NoSuchElementException();
@@ -180,20 +142,10 @@ class DoublyLinkedList <E> {
 		return node.data;
 	}
 
-	/**
-	 * size
-	 * Returns the size of the list
-	 * @return int
-	 */
 	public int size() {
 		return size;
 	}
 
-	/**
-	 * reverse
-	 * Reverses the list
-	 * @return void
-	 */
 	public void reverse() {
 		Node itr = first;
 		Node temp = first;
@@ -207,11 +159,6 @@ class DoublyLinkedList <E> {
 		}
 	}
 
-	/**
-	 * toString
-	 * Returns a string of the list
-	 * @return String
-	 */
 	public String toString() {
 		Node node = first;
 		String str = node.data.toString();
