@@ -13,8 +13,12 @@ public class TreeUtilities_Salom {
 		disp.displayTree(parent);
 		createTree(1, parent);
 		TreeNode copy = util.copy(parent);
-		//parent = util.createDecodingTree(disp);
+
+		parent = util.createDecodingTree(disp);
 		System.out.println(util.sameShape(parent, copy));
+		System.out.println(util.countNodes(parent)); 
+		System.out.println(util.decodeMorse(parent, "- .-. . ...- --- .-.", disp));
+
 		util.preOrder(parent, disp);
 		util.inOrder(parent, disp);
 		util.postOrder(parent, disp);
@@ -241,22 +245,20 @@ class TreeUtilities
 	public static String decodeMorse(TreeNode decodingTree, String cipherText, TreeDisplay display)
 	{
 		String str = "";
+		TreeNode root = decodingTree;
 		for(String word : cipherText.split(" ")) {
+			decodingTree = root;
 			for(char i : word.toCharArray()) {
-				System.out.println(i + "");
-				System.out.println(i == '.');
 				if(i == '.') {
 					decodingTree = decodingTree.getRight();
 				}
 				else if(i == '-') {
 					decodingTree = decodingTree.getLeft();
 				}
+				display.visit(decodingTree);
 			}
-			System.out.println(decodingTree.getValue());
-			display.visit(decodingTree);
 			str += decodingTree.getValue();
 		}
-		System.out.println("");
 		return str;
 	}
 
