@@ -1,0 +1,45 @@
+#include <iostream>
+#include <cstdio>
+#include <cstring>
+
+class YoString {
+	public:
+		char *string;
+		int size;
+
+		YoString() {
+			string = NULL;
+		}
+
+		YoString(const char *arr) {
+			string = (char*) arr;
+		}
+
+		void print() {
+			std::cout << string << std::endl;
+		}
+
+		void printMemoryAddress() {
+			std::cout << "Memory address: " << &string << std::endl;
+		}
+
+		YoString operator +(const YoString  &q) const {
+			YoString s(new char[strlen(string)+strlen(q.string)+1]);
+			strcpy(s.string,string);
+			strcat(s.string,q.string);
+			return s;
+		}
+};
+
+int main() {
+	// testing instantiation
+	YoString newString("test");
+	YoString newStringTwo("testTwo");
+	YoString newStringConcat = newString + newStringTwo;
+	newString.print();
+	newString.printMemoryAddress();
+	newStringConcat.print();
+
+
+	return 0;
+}
